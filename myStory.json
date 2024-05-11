@@ -1,58 +1,220 @@
 {
-    "Title": "Campus Life on the West Side",
-    "Credits": "Created by Adam Smith (amsmith@ucsc.edu).",
-    "InitialLocation": "Kresge",
+    "Title": "Meteor Madness",
+    "Credits": "Created by Daniel Do (daado@ucsc.edu) with code from Adam Smith (amsmith@ucsc.edu).",
+    "InitialLocation": "Home",
     "Locations": {
-        "Kresge": {
-            "Body": "This is Kresge College, lots of nice trees.",
+        "Home": {
+            "Body": "You happen to notice a meteor crash in the Donut Plains. By helping an Agent with the meteor, you both end up learning about the meteors that are falling all over the Leinad Province.",
             "Choices": [
                 {
-                    "Text": "South",
-                    "Target": "Porter"
+                    "Text": "Look into the rumors of strange weather near the inn",
+                    "Target": "Look into the rumors of strange weather near the inn"
                 }
             ]
         },
-        "Porter": {
-            "Body": "This is Porter College, the trees are nice here too.",
+        "Look into the rumors of strange weather near the inn": { 
+            "Body": "What's that noise...? It's coming from the west. What was that? It seems to have landed nearby, maybe you should go check it out.",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Kresge"
-                },
-                {
-                    "Text": "South",
-                    "Target": "Rachel Carson"
+                    "Text": "Check it out",
+                    "Target": "Check it out"
                 }
             ]
         },
-        "Rachel Carson": {
-            "Body": "Rachel Carson College, more sun and fewer trees.",
+        "Check it out": {
+            "Body": "Agent: \"Hey you! Human. What are you doing here? You're not supposed to be here! Seeing as you are new to the land, I can't see you being prosecuted. This meteor is different to what we've seen before. We suspect that direct contact with the meteor is dangerous. The magical radiation doesn't seem to be affecting you at all though. Do you not feel anything? Perhaps you could help me locate it.\"",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Porter"
-                },
-                {
-                    "Text": "South",
-                    "Target": "Oakes"
+                    "Text": "Explore the cave that the meteor crashed into",
+                    "Target": "Explore the cave that the meteor crashed into"
                 }
             ]
         },
-        "Oakes": {
-            "Body": "Oakes College, even the buildings have tree bark on them.",
+        "Explore the cave that the meteor crashed into": {
+            "Body": "It seems like the meteor crashed into a cave. Inside the cave, there's two paths to continue on.",
             "Choices": [
                 {
-                    "Text": "North",
-                    "Target": "Rachel Carson"
-                },
+                    "Text": "Left path",
+                    "Target": "Left path"
+                }
+            ],
+            "Investigation": [
                 {
-                    "Text": "South",
-                    "Target": "Beyond"
+                    "Text": "Right path",
+                    "Target": "Right path"
                 }
             ]
         },
-        "Beyond": {
-            "Body": "Grass, don't forget to check for ticks!"
+        "Left path": {
+            "Body": "You reach an intersection where you can see a meteor shard along the path the meteor crashed down through.",
+            "Choices": [
+                {
+                    "Text": "Continue on the path",
+                    "Target": "Continue on the path"
+                }
+            ],
+            "Investigation": [
+                {
+                    "Text": "Look closer at the meteor shard",
+                    "Target": "Look closer at the meteor shard"
+                }
+            ]
+        },
+        "Right path": { 
+            "Body": "As you walk deeper into the cave, you approach a dead end containing a rusty shovel. Looks like someone was here before...",
+            "Choices": [
+                {
+                    "Text": "Pick up the rusty shovel",
+                    "Target": "Pick up the rusty shovel"
+                }
+            ]
+        },
+        "Pick up the rusty shovel": { 
+            "Body": "Maybe this will come in handy later.",
+            "Choices": [
+                {
+                    "Text": "Left path",
+                    "Target": "Left path"
+                }
+            ]
+        },
+        "Look closer at the meteor shard": {
+            "Body": "The meteor shard is radiating an odd and unfamiliar magical energy.",
+            "Choices": [
+                {
+                    "Text": "Continue on the path",
+                    "Target": "Continue on the path"
+                }
+            ]
+        },
+        "Continue on the path": {
+            "Body": "An explosion occurs, blocking off the meteor's path and forces you stuck into a dead end.",
+            "Choices": [
+                {
+                    "Text": "...",
+                    "Target": "..."
+                }
+            ],
+            "Locked": [
+                {
+                    "Text": "Pull out the rusty shovel",
+                    "Target": "Pull out the rusty shovel"
+                }
+            ]
+        },
+        "Pull out the rusty shovel": { 
+            "Body": "As you shovel your way out, an ominous voice is heard from a distance...",
+            "Choices": [
+                {
+                    "Text": "Listen in",
+                    "Target": "Listen in"
+                }
+            ]
+        },
+        "Listen in": { 
+            "Body": "???: \"It's... mine.\"",
+            "Choices": [
+                {
+                    "Text": "Escape the cave",
+                    "Target": "Escape the cave"
+                }
+            ],
+            "Investigation": [
+                {
+                    "Text": "Follow the voice through the weird trail",
+                    "Target": "Follow the voice through the weird trail"
+                }
+            ]
+        },
+        "Follow the voice through the weird trail": { 
+            "Body": "Thief: \".̸.̴.̵.̴ I can't control myself...f̸j̷f̴j̵f̵j̴ This rock...\"",
+            "Choices": [
+                {
+                    "Text": ">",
+                    "Target": ">"
+                }
+            ]
+        },
+        ">": { 
+            "Body": "Thief: \"What is... this feeling… No I won't listen..\"",
+            "Choices": [
+                {
+                    "Text": ">>",
+                    "Target": ">>"
+                }
+            ]
+        },
+        ">>": { 
+            "Body": "Thief: \"I can't... control... my mind... e̴n̴d̴ ̷m̶e̷.̷\"",
+            "Choices": [
+                {
+                    "Text": ">>>",
+                    "Target": ">>>"
+                }
+            ]
+        },
+        ">>>": { 
+            "Body": "It seems that a meteor shard has made the thief go crazy! The thief is quickly and aggresively coming to attack you!",
+            "Choices": [
+                {
+                    "Text": "Swing the rusty shovel",
+                    "Target": "Swing the rusty shovel"
+                }
+            ]
+        },
+        "Swing the rusty shovel": { 
+            "Body": "Nicely done! The thief was stopped. Looks like the meteor shard stolen has been dropped.",
+            "Choices": [
+                {
+                    "Text": "Grab the stolen meteor shard and escape the cave",
+                    "Target": "Grab the stolen meteor shard and escape the cave"
+                }
+            ]
+        },
+        "Grab the stolen meteor shard and escape the cave": {
+            "Body": "Agent: \"Hello again. Did you find the meteor down there? Why on earth are you holding some?!\"",
+            "Choices": [
+                {
+                    "Text": "Continue talking",
+                    "Target": "Continue talking"
+                }
+            ]
+        },
+        "Continue talking": {
+            "Body": "Agent: \"I see. This material is incredibly rare and magically powerful. Meteors fall all over Leinad and come in a variety of colors and potency.\"",
+            "Choices": [
+                {
+                    "Text": "Continue talking...",
+                    "Target": "Continue talking..."
+                }
+            ]
+        },
+        "Continue talking...": {
+            "Body": "Agent: \"We don't fully understand them, but we know they are dangerous. Every scientist who has studied them has lost their minds.\"",
+            "Choices": [
+                {
+                    "Text": "Continue talking to the Agent",
+                    "Target": "Continue talking to the Agent"
+                }
+            ]
+        },
+        "Continue talking to the Agent": {
+            "Body": "Agent: \"The meteors hold many secrets and powers, maybe the ones we need to end all of the madness we've seen. Thank you, here's a small reward for helping us.\"",
+            "Choices": [
+                {
+                    "Text": "Reward",
+                    "Target": "Reward"
+                }
+            ]
+        },
+        "Reward": {
+            "Body": "Just a singular coin, but it's more than a coin... it's a coin with story behind it; a story of how a piece of the cosmos made someone so obsessed that it made them go mad out of this world."
+        },
+        "Escape the cave": {
+            "Body": "The Agent from before seems to have been attacked by an unknown being. You get the feeling that this incident could have been avoided. You are burdened with tremendous guilt, there is no returning home for you."
+        },
+        "...": {
+            "Body": "You are stuck, unable to breath as the oxygen in the cave quickly depletes. You try to claw your way out, but it is too late. You realize that you have been caved in, and there is no way out."
         }
     }
 }

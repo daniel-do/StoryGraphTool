@@ -1,0 +1,29 @@
+
+body {
+    font-family: monospace;
+    font-size: 105%;
+    text-align: center;
+    color: white;
+    background-color: #461D7C;
+}
+
+h1 {
+    color: #8f4793;
+    font-size: 100px;
+}
+
+div {
+    margin: 30px;
+}
+
+button {
+    font-family: monospace;
+    color: #A41f44;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+button:hover {
+    font-family: monospace;
+    color: #511021;
+}

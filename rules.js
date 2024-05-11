@@ -1,22 +1,24 @@
 class Start extends Scene {
     create() {
-        this.engine.setTitle("Title goes here"); // TODO: replace this text using this.engine.storyData to find the story title
+        let storyTitle = this.engine.storyData.Title
+        this.engine.setTitle(storyTitle); // TODO: replace this text using this.engine.storyData to find the story title
         this.engine.addChoice("Begin the story");
     }
 
     handleChoice() {
-        this.engine.gotoScene(Location, "Home"); // TODO: replace this text by the initial location of the story
+        let firstlocation = this.engine.storyData.InitialLocation;
+        this.engine.gotoScene(Location, firstlocation); // TODO: replace this text by the initial location of the story
     }
 }
 
 class Location extends Scene {
     create(key) {
-        let locationData = undefined; // TODO: use `key` to get the data object for the current story location
-        this.engine.show("Body text goes here"); // TODO: replace this text by the Body of the location data
+        let locationData = this.engine.storyData.Locations[key]; // TODO: use `key` to get the data object for the current story location
+        this.engine.show(locationData.Body); // TODO: replace this text by the Body of the location data
         
-        if(true) { // TODO: check if the location has any Choices
-            for(let choice of ["example data"]) { // TODO: loop over the location's Choices
-                this.engine.addChoice("action text"); // TODO: use the Text of the choice
+        if(locationData.Choices && locationData.Choices.length > 0) { // TODO: check if the location has any Choices
+            for(let choice of locationData.Choices) { // TODO: loop over the location's Choices
+                this.engine.addChoice(choice.Text, choice.Target); // TODO: use the Text of the choice
                 // TODO: add a useful second argument to addChoice so that the current code of handleChoice below works
             }
         } else {
@@ -26,10 +28,50 @@ class Location extends Scene {
 
     handleChoice(choice) {
         if(choice) {
-            this.engine.show("&gt; "+choice.Text);
-            this.engine.gotoScene(Location, choice.Target);
+            this.engine.show("> "+ choice);
+            this.engine.gotoScene(Interaction, choice);
         } else {
             this.engine.gotoScene(End);
+        }
+    }
+}
+
+class Interaction extends Location {
+    create(key) {
+        super.create(key);
+        let locationData = this.engine.storyData.Locations[key]; // TODO: use `key` to get the data object for the current story location
+
+        if (key === "Continue on the path" && this.engine.hasItem("shovel")) {
+            for (let lockoption of locationData.Locked) {
+                this.engine.addChoice(lockoption.Text, lockoption.Target);
+            } 
+        } else {
+            if(locationData.Investigation && locationData.Investigation.length > 0) { // TODO: check if the location has any Choices
+                for(let option of locationData.Investigation) { // TODO: loop over the location's Choices
+                    this.engine.addChoice(option.Text, option.Target); // TODO: use the Text of the choice
+                    // TODO: add a useful second argument to addChoice so that the current code of handleChoice below works
+                }
+            }
+        }
+    }
+    handleChoice(choice) {
+        if(choice) {
+            if(choice === "Pick up the rusty shovel") {
+                this.engine.addToInventory("shovel");
+            }
+            this.engine.show("> "+ choice);
+            this.engine.gotoScene(Interaction, choice);
+        } else {
+            this.engine.gotoScene(End);
+        }
+    }
+}
+
+class ShovelLocation extends Scene {
+    handleChoice(choice) {
+        if(choice === "Pick up the rusty shovel") {
+            this.engine.addToInventory("shovel");
+            this.engine.gotoScene(Interaction, choice)
         }
     }
 }
